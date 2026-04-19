@@ -40,6 +40,8 @@ The current product slice supports the core decision workflow:
 - Recompute result snapshots asynchronously through Messenger workers.
 - Publish Mercure `result_updated` notifications on `/sessions/{id}/results`.
 - Have the web client refetch REST results after Mercure notifications.
+- Record product-facing activity events for workspace, member, session, option, voting, vote, close, and result recompute actions.
+- Read workspace dashboard analytics from `GET /workspaces/{id}/dashboard`.
 
 REST remains the source of truth. Mercure is used as an invalidation signal only.
 
@@ -76,7 +78,8 @@ The Compose stack bind-mounts the sibling `decision-engine-api` and `decision-en
 ## Known Gaps
 
 - Member add is not a true invitation system; it only adds already registered users by `email` or legacy `user_id`.
-- Auditability exists in the immutable vote model, but there is no dedicated audit export/read endpoint or UI.
+- Dashboard activity is stored and displayed, but there is no dedicated audit export endpoint yet.
 - Auth is MVP-grade bearer token auth without token expiry, refresh, or revocation.
+- Decision categories/nodes, due dates, assigned stakeholders, comments, unread notifications, and real notification settings remain future product work.
 - Application orchestration is partly in controllers; fully separate command/use-case classes remain a future refactor.
-- The untracked API demo seed command is not part of this documentation-alignment slice.
+- Demo seed data includes workspaces, members, decisions, options, votes, result snapshots, and dashboard activity rows.
