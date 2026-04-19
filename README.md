@@ -34,6 +34,7 @@ The current product slice supports the core decision workflow:
 - Create a workspace; the creator becomes `OWNER`.
 - Add existing registered users to a workspace by email.
 - Create draft decision sessions with `MAJORITY` or `RANKED_IRV` voting.
+- Add optional real decision metadata: category/node, due date, and assigned stakeholders from existing workspace members.
 - Add options while the session is `DRAFT`.
 - Open a session for voting and close it when complete.
 - Cast votes as immutable rows; changed votes create new rows and latest vote wins.
@@ -41,7 +42,7 @@ The current product slice supports the core decision workflow:
 - Publish Mercure `result_updated` notifications on `/sessions/{id}/results`.
 - Have the web client refetch REST results after Mercure notifications.
 - Record product-facing activity events for workspace, member, session, option, voting, vote, close, and result recompute actions.
-- Read workspace dashboard analytics from `GET /workspaces/{id}/dashboard`.
+- Read workspace dashboard analytics from `GET /workspaces/{id}/dashboard`, including rule-based due-soon and overdue insights from real due dates.
 
 REST remains the source of truth. Mercure is used as an invalidation signal only.
 
@@ -80,6 +81,7 @@ The Compose stack bind-mounts the sibling `decision-engine-api` and `decision-en
 - Member add is not a true invitation system; it only adds already registered users by `email` or legacy `user_id`.
 - Dashboard activity is stored and displayed, but there is no dedicated audit export endpoint yet.
 - Auth is MVP-grade bearer token auth without token expiry, refresh, or revocation.
-- Decision categories/nodes, due dates, assigned stakeholders, comments, unread notifications, and real notification settings remain future product work.
+- Decision categories/nodes, due dates, and assigned stakeholders are implemented as minimal metadata fields, not a full taxonomy/workflow model.
+- Comments, unread notifications, real notification settings, stakeholder progress, and assignment workflows remain future product work.
 - Application orchestration is partly in controllers; fully separate command/use-case classes remain a future refactor.
-- Demo seed data includes workspaces, members, decisions, options, votes, result snapshots, and dashboard activity rows.
+- Demo seed data includes workspaces, members, decisions, metadata, assignees, options, votes, result snapshots, and dashboard activity rows.

@@ -27,6 +27,7 @@ Documentation. Owns customer request summaries, architecture, ADRs, API notes, a
 - Authentication and token issuance
 - Workspace membership and authorization rules
 - Session lifecycle, option management, and vote acceptance
+- Session metadata for category/node, due date, and existing-member assignees
 - Async result recomputation through Messenger
 - Mercure `result_updated` publishing for `/sessions/{id}/results`
 - Read-model endpoints used by the web client
@@ -56,4 +57,4 @@ Documentation. Owns customer request summaries, architecture, ADRs, API notes, a
 
 The repository split is operational, not a backend service split. `decision-engine-api` remains one deployable modular monolith.
 
-Known gaps are documented rather than implemented in this slice: true invitations, audit read/export surfaces, token expiry/refresh/revocation, and a future application-layer refactor away from controller-heavy orchestration.
+Known gaps are documented rather than implemented in this slice: true invitations, audit read/export surfaces, token expiry/refresh/revocation, comments/discussion, notifications/read state, richer assignment workflows, category taxonomy, and a future application-layer refactor away from controller-heavy orchestration.
