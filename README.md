@@ -2,6 +2,13 @@
 
 Product and technical documentation for the real-time decision platform.
 
+## License Status
+
+This repository is source-available for viewing and evaluation only.
+All rights are reserved by the author. No permission is granted to use,
+modify, redistribute, or commercialize this material without prior written
+permission. See [LICENSE](LICENSE).
+
 ## Contents
 
 - Customer request summary.
