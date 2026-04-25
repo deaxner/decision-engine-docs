@@ -32,6 +32,8 @@ Documentation. Owns customer request summaries, architecture, ADRs, API notes, a
 - Mercure `result_updated` publishing for `/sessions/{id}/results`
 - Read-model endpoints used by the web client
 - Direct member add for existing registered users by `email` or `user_id`
+- Demo data orchestration through application services; console commands are only entrypoints
+- HTTP controllers should remain adapters; request mapping, write orchestration, read-model querying, access checks, result computation, async handlers, and response shaping belong in explicit backend boundary/application services, with typed inputs, explicit response outputs, and narrow persistence ports for both reads and writes at the application edge
 
 `decision-engine-web`
 
@@ -57,4 +59,4 @@ Documentation. Owns customer request summaries, architecture, ADRs, API notes, a
 
 The repository split is operational, not a backend service split. `decision-engine-api` remains one deployable modular monolith.
 
-Known gaps are documented rather than implemented in this slice: true invitations, audit read/export surfaces, token expiry/refresh/revocation, comments/discussion, notifications/read state, richer assignment workflows, category taxonomy, and a future application-layer refactor away from controller-heavy orchestration.
+Known gaps are documented rather than implemented in this slice: true invitations, audit read/export surfaces, token expiry/refresh/revocation, comments/discussion, notifications/read state, richer assignment workflows, category taxonomy, and continued tightening of feature boundaries where legacy controller logic still exists.

@@ -13,6 +13,7 @@ permission. See [LICENSE](LICENSE).
 
 - Customer request summary.
 - Repository boundary decisions.
+- Architecture decision records in `docs/adr/`.
 - Local runtime stack notes.
 - Shipped MVP behavior across API, web, and infra.
 - Known MVP gaps and documentation drift notes.
@@ -25,6 +26,8 @@ The implementation is currently spread across four repositories under `deaxner`:
 - `decision-engine-web`: React + Vite + TypeScript MVP client for auth, workspaces, sessions, voting, and live result refresh.
 - `decision-engine-infra`: Docker Compose local dev stack for `postgres`, `redis`, `mercure`, `api`, `worker`, and `web`.
 - `decision-engine-docs`: cross-repo product and technical documentation.
+
+The backend remains the product source of truth. Repository separation is for ownership and delivery, not a signal that the domain should be split into separate runtime services. See [ADR 0001](docs/adr/0001-feature-based-monolith-en-backend-owned-productwaarheid.md).
 
 ## Shipped MVP Behavior
 
